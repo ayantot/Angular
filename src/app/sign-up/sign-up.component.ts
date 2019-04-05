@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import { Signup } from '../sign-up';
 
 @Component({
@@ -11,8 +12,14 @@ export class SignUpComponent implements OnInit {
   mail : Signup = {
     email: "Mon email"
   }
+  model: Signup = new Signup();
+  
 
   constructor() { }
+
+  onSubmit(){
+    console.log(this.model);
+  }
 
   ngOnInit() {
   }
