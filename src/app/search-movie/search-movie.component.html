@@ -1,0 +1,39 @@
+<form (ngSubmit)="myForm.valid && onSubmit()" [formGroup]="filmForm" #myForm="ngForm">
+  <h2>Search movies</h2>
+  <div formGroupName="FilmIdOrTitle">
+    <label for="FilmIdOrTitle-id">Identifiant :</label>
+      <input name="FilmIdOrTitle-id" type="number" formControlName="Identifiant" />
+    <label for="FilmIdOrTitle-title">Titre :</label>
+      <input name="FilmIdOrTitle-title" type="text" formControlName="Titre" />
+    <div *ngIf="filmForm.controls.FilmIdOrTitle.errors && myForm.submitted">
+      <span *ngIf="filmForm.controls.FilmIdOrTitle.errors.isRequired">Merci de renseigner Idendifiant ou Titre</span>
+    </div>
+  </div>
+  <div>
+    <label for="type-film">Type</label>
+      <select name="type-film" formControlName="Type">
+        <option value="film">Film</option>
+        <option value="serie">Série</option>
+        <option value="episode">Episode</option>
+      </select>
+  </div>
+  <div>
+    <label for="annee-film">Année de sortie :</label>
+      <input name="annee-film" type="number" formControlName="AnneeDeSortie" />
+    <div *ngIf="filmForm.controls.AnneeDeSortie.errors && myForm.submitted">
+      <span *ngIf="filmForm.controls.AnneeDeSortie.errors.min">Merci de selectionner entre {{minimumYear}} et
+        {{maximumYear}}</span>
+    </div>
+  </div>
+  <div>
+    <label for="fiche-film">Fiche :</label>
+      <select name="fiche-film" formControlName="Fiche">
+        <option value="complete">Complète</option>
+        <option value="courte">Courte</option>
+      </select>
+  </div>
+  <button type="submit">Search</button>
+</form>
+
+
+
